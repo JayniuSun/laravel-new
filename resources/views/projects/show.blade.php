@@ -18,14 +18,14 @@
 
                     <div class="mb-4">
                         <p class="text-sm text-gray-500 dark:text-gray-400">
-                            <strong>Created At:</strong> {{ $project->created_at->format('M d, Y H:i A') }}
+                            <strong>Created At:</strong> {{ $project->created_at }}
                         </p>
                         <p class="text-sm text-gray-500 dark:text-gray-400">
-                            <strong>Last Updated:</strong> {{ $project->updated_at->format('M d, Y H:i A') }}
+                            <strong>Last Updated:</strong> {{ $project->updated_at }}
                         </p>
                         @if ($project->due_date)
                             <p class="text-sm text-gray-500 dark:text-gray-400">
-                                <strong>Due Date:</strong> {{ \Carbon\Carbon::parse($project->due_date)->format('M d, Y') }}
+                                <strong>Due Date:</strong> {{ $project->due_date }}
                             </p>
                         @endif
                     </div>
