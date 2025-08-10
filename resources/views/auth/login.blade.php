@@ -44,4 +44,37 @@
             </x-primary-button>
         </div>
     </form>
+<!-- eye password script -->
+<script>
+    const passwordInput = document.getElementById('password');
+    const togglePasswordButton = document.createElement('button');
+    togglePasswordButton.setAttribute('type', 'button');
+    togglePasswordButton.classList.add('absolute', 'inset-y-0', 'right-0', 'pr-3', 'flex', 'items-center', 'text-sm', 'leading-5');
+    togglePasswordButton.innerHTML = `
+        <svg class="h-5 w-5 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path id="eye-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+            <path id="eye-slash-icon" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.418 0-8-2.915-8-6s3.582-6 8-6a9.95 9.95 0 011.825.125M17.25 12c0 2.21-1.79 4-4 4s-4-1.79-4-4 1.79-4 4-4 4 1.79 4 4z"></path>
+        </svg>
+    `;
+
+    togglePasswordButton.addEventListener('click', () => {
+        const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+        passwordInput.setAttribute('type', type);
+
+        const eyeIcon = togglePasswordButton.querySelector('#eye-icon');
+        const eyeSlashIcon = togglePasswordButton.querySelector('#eye-slash-icon');
+
+        if (type === 'password') {
+            eyeIcon.classList.remove('hidden');
+            eyeSlashIcon.classList.add('hidden');
+        } else {
+            eyeIcon.classList.add('hidden');
+            eyeSlashIcon.classList.remove('hidden');
+        }
+    });
+
+    const passwordContainer = passwordInput.parentNode;
+    passwordContainer.classList.add('relative');
+    passwordContainer.appendChild(togglePasswordButton);
+</script>   
 </x-guest-layout>
