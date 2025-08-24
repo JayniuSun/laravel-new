@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Models\Project;
+use App\Models\Product;
+use App\Models\Log;
+
 
 class User extends Authenticatable
 {
@@ -52,8 +55,13 @@ class User extends Authenticatable
         return $this->hasMany(Project::class);
     }
 
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
+
     public function logs()
     {
-        return $this->hasMany(Project::class);
+        return $this->hasMany(Log::class);
     }
 }
