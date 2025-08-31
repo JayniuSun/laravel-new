@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\ProductController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -14,6 +15,9 @@ Route::get('/dashboard', function () {
 
 Route::resource('projects', \App\Http\Controllers\ProjectController::class)
     ->middleware(['auth', 'verified']);
+
+Route::resource('products', \App\Http\Controllers\ProductController::class)
+->middleware(['auth', 'verified']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
