@@ -34,6 +34,7 @@
                                         @if ($project->due_date)
                                             <p class="text-sm text-gray-500 dark:text-gray-400">Due: {{ \Carbon\Carbon::parse($project->due_date)->format('M d, Y') }}</p>
                                         @endif
+                                        <p class="text-sm text-gray-500 dark:text-gray-400">{{ $project->image }}</p>
                                     </div>
                                     <div class="flex space-x-2">
                                         <!-- show -->
