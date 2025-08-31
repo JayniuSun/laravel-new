@@ -24,10 +24,12 @@ class ProductController extends Controller
             'description' => 'nullable|string',
             'price' => 'required|integer',
             'stock' => 'required|integer',
-            'image' => 'required|string'
+            'image' => 'required|file|image',
         ]);
 
-        auth()->user()->products()->create($request->all());
+        $imagePath = $request->file('image')->store('product_images', 'public');
+
+        auth()->user()->products()->create(array_merge($request->all(), ['image' => $imagePath]));
 
         return redirect()->route('products.index')->with('success', 'Product created successfully!');
     }
@@ -51,11 +53,12 @@ class ProductController extends Controller
             'description' => 'nullable|string',
             'price' => 'required|integer',
             'stock' => 'required|integer',
-            'image' => 'required|string'
+            'image' => 'required|file|image',
         ]);
 
-        $products = auth()->user()->products()->findOrFail($id);
-        $products->update($request->all());
+        $product = auth()->user()->products()->findOrFail($id);
+        $imagePath = $request->file('image')->store('product_images', 'public');
+        $product->update(array_merge($request->all(), ['image' => $imagePath]));
 
         return redirect()->route('products.index')->with('success', 'Product updated successfully!');
     }
