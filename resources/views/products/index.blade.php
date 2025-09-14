@@ -29,7 +29,7 @@
                             @foreach ($products as $product)
                                 <li class="py-4 flex justify-between items-center">
                                     <div>
-                                        <a href="{{ route('products.show', $product->id) }}" class="text-blue-600 dark:text-blue-400 hover:underline text-lg font-medium">{{ $product->name }} dasdsa</a>
+                                        <a href="{{ route('products.show', $product->id) }}" class="text-blue-600 dark:text-blue-400 hover:underline text-lg font-medium">{{ $product->product_name }}</a>
                                         <p class="text-sm text-gray-500 dark:text-gray-400">{{ Str::limit($product->description, 70) }}</p>
                                         <!-- 'product_name', 'description', 'price', 'stock', 'image' -->
                                          <p class="text-sm text-gray-500 dark:text-gray-400">{{ Str::limit($product->price, 70) }}</p>
