@@ -4,10 +4,13 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\MessageController;
+
 
 Route::get('/', function () {
     return view('welcome');
 });
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -17,6 +20,9 @@ Route::resource('projects', \App\Http\Controllers\ProjectController::class)
     ->middleware(['auth', 'verified']);
 
 Route::resource('products', \App\Http\Controllers\ProductController::class)
+->middleware(['auth', 'verified']);
+
+Route::resource('messages', \App\Http\Controllers\MessageController::class)
 ->middleware(['auth', 'verified']);
 
 Route::middleware('auth')->group(function () {
