@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 use App\Models\Project;
-
 use Illuminate\Http\Request;
 
 class ProjectController extends Controller
@@ -62,5 +61,11 @@ class ProjectController extends Controller
 
         return redirect()->route('projects.index')->with('success', 'Project deleted successfully!');
     }
-    
+
+    public function deleteAll()
+    {
+        Project::truncate();
+        return redirect()->route('projects.index')->with('success', 'All projects deleted successfully');
+        
+    }
 }

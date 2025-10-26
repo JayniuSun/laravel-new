@@ -67,5 +67,11 @@ class ProductController extends Controller
 
         return redirect()->route('products.index')->with('success', 'Product deleted successfully!');
     }
+
+    public function deleteAll()
+    {
+        Product::truncate();
+        return redirect()->route('products.index')->with('success', 'All products deleted successfully');
+    }
     
 }

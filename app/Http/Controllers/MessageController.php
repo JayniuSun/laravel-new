@@ -31,4 +31,11 @@ class MessageController extends Controller
         return redirect()->route('messages.index')->with('success', 'Message deleted successfully');
     }
 
+    public function deleteAll()
+    {
+        Message::truncate();
+        // TRUNCATE TABLE `laravel`.`messages`
+        return redirect()->route('messages.index')->with('success', 'All messages deleted successfully');
+    }
+
 }
