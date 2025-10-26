@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 
 use App\Models\Product;
 use App\Models\Project;
+use App\Models\Category;
 use App\Models\User;
 
 class FactorySeeder extends Seeder
@@ -23,23 +24,25 @@ class FactorySeeder extends Seeder
             'email' => 'test@example.com',
         ]);
 
-        // 2. Create some projects and products for the test user
-        Project::factory()->count(5)->create([
-            'user_id' => $testUser->id,
-        ]);
+        // // 2. Create some projects and products for the test user
+        // Project::factory()->count(5)->create([
+        //     'user_id' => $testUser->id,
+        // ]);
 
-        Product::factory()->count(15)->create([
-            'user_id' => $testUser->id,
-        ]);
+        // Product::factory()->count(15)->create([
+        //     'user_id' => $testUser->id,
+        // ]);
 
-        // 3. Create 10 more random users, and for each user, create related projects and products
-        User::factory(10)->create()->each(function ($user) {
-            Project::factory()->count(rand(2, 8))->create([
-                'user_id' => $user->id,
-            ]);
-            Product::factory()->count(rand(5, 20))->create([
-                'user_id' => $user->id,
-            ]);
-        });
+        // Category::factory()->count(5)->create();
+            
+        // // 3. Create 10 more random users, and for each user, create related projects and products
+        // User::factory(10)->create()->each(function ($user) {
+        //     Project::factory()->count(rand(2, 8))->create([
+        //         'user_id' => $user->id,
+        //     ]);
+        //     Product::factory()->count(rand(5, 20))->create([
+        //         'user_id' => $user->id,
+        //     ]);
+        // });
     }
 }

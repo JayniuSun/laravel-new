@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\MessageController;
-
+use App\Http\Controllers\CategoryController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -19,6 +19,9 @@ Route::get('/dashboard', function () {
 Route::resource('projects', \App\Http\Controllers\ProjectController::class)
     ->middleware(['auth', 'verified']);
 
+Route::resource('categories', \App\Http\Controllers\CategoryController::class)
+    ->middleware(['auth', 'verified']);
+
 Route::resource('products', \App\Http\Controllers\ProductController::class)
 ->middleware(['auth', 'verified']);
 
@@ -28,6 +31,7 @@ Route::resource('messages', \App\Http\Controllers\MessageController::class)
 Route::get('/delete-message-all', [MessageController::class, 'deleteAll'])->name('messages.delete-all');
 Route::get('/delete-product-all', [ProductController::class, 'deleteAll'])->name('products.delete-all');
 Route::get('/delete-project-all', [ProjectController::class, 'deleteAll'])->name('projects.delete-all');
+Route::get('/delete-category-all', [CategoryController::class, 'deleteAll'])->name('categories.delete-all');
 
 // route jalankan seeder
 Route::get('/run-seeder', function () {
