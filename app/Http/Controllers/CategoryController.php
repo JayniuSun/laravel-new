@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 
 class CategoryController extends Controller
 {
@@ -62,7 +64,11 @@ class CategoryController extends Controller
 
     public function deleteAll()
     {
+        // uncheck foreign key constraint
+        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
         Category::truncate();
+        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+        
         return redirect()->route('categories.index')->with('success', 'All categories deleted successfully');
         
     }
