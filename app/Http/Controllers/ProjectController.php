@@ -8,7 +8,8 @@ class ProjectController extends Controller
 {
     public function index()
     {
-        $projects = auth()->user()->projects()->orderBy('due_date', 'asc')->get();
+        // $projects = auth()->user()->projects()->orderBy('due_date', 'asc')->get();
+        $projects = Project::all();
         return view('projects.index', compact('projects'));
     }
     public function create()

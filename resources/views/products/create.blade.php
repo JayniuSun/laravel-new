@@ -55,6 +55,19 @@
                             @enderror
                         </div>
 
+                        <div class="mb-4">
+                            <label for="category_id" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Category</label>
+                            <select name="category_id" id="category_id" class="mt-1 block w-full rounded-md shadow-sm border-gray-300 dark:border-gray-700 dark:bg-gray-900 text-gray-900 dark:text-gray-100 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                                <option value="">Select a category</option>
+                                @foreach($categories as $category)
+                                    <option value="{{ $category->id }}" >{{ $category->categories_name }}</option>
+                                @endforeach
+                            </select>
+                            @error('category_id')
+                                <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                            @enderror
+                        </div>
+
                         <div class="flex items-center justify-end mt-4">
                             <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600">Create Product</button>
                         </div>

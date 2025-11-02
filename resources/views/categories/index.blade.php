@@ -30,7 +30,7 @@
                             @foreach ($categories as $category)
                                 <li class="py-4 flex justify-between items-center">
                                     <div>
-                                        <a href="{{ route('categories.show', $category->id) }}" class="text-blue-600 dark:text-blue-400 hover:underline text-lg font-medium">{{ $category->name }} dasdsa</a>
+                                        <a href="{{ route('categories.show', $category->id) }}" class="text-blue-600 dark:text-blue-400 hover:underline text-lg font-medium">{{ $category->categories_name }} </a>
                                         <p class="text-sm text-gray-500 dark:text-gray-400">{{ Str::limit($category->categories_name, 70) }}</p>
                                         <p class="text-sm text-gray-500 dark:text-gray-400">{{ Str::limit($category->keterangan, 70) }}</p>
                                         

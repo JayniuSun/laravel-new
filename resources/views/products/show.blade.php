@@ -13,7 +13,7 @@
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     <!-- 'product_name', 'description', 'price', 'stock', 'image' -->
                     <div class="mb-4">
-                        <h3 class="text-xl font-semibold text-gray-900 dark:text-gray-100">{{ $products->product_name }} {{ $products->category->categories_name }}</h3>
+                        <h3 class="text-xl font-semibold text-gray-900 dark:text-gray-100">{{ $products->product_name }} {{ $products->category->categories_name ?? 'No Category' }}</h3>
                         <p class="text-gray-700 dark:text-gray-300 mt-2">{{ $products->description }}</p>
                         <p class="text-gray-700 dark:text-gray-300 mt-2">{{ $products->price }}</p>
                         <p class="text-gray-700 dark:text-gray-300 mt-2">{{ $products->stock }}</p>

@@ -21,11 +21,6 @@
                             
                         </div>
                         
-                        <div class="mb-4">
-                            <label for="keterangan" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Keterangan</label>
-                            <input type="text" name="keterangan" id="keterangan" class="mt-1 block w-full rounded-md shadow-sm border-gray-300 dark:border-gray-700 dark:bg-gray-900 text-gray-900 dark:text-gray-100 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" value="{{ old('keterangan', $category->keterangan) }}" required>
-                        </div>
-                        
 
                         <div class="flex items-center justify-end mt-4">
                             <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600">Update Category</button>

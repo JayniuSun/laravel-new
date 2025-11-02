@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Product;
+use App\Models\Category;
 
 use Illuminate\Http\Request;
 
@@ -14,7 +15,8 @@ class ProductController extends Controller
     }
     public function create()
     {
-        return view('products.create');
+        $categories = Category::all();
+        return view('products.create', compact('categories'));
     }
     public function store(Request $request)
     {
@@ -28,7 +30,7 @@ class ProductController extends Controller
         ]);
 
         auth()->user()->products()->create($request->all());
-
+        
         return redirect()->route('products.index')->with('success', 'Product created successfully!');
     }
 
@@ -41,7 +43,10 @@ class ProductController extends Controller
     public function edit($id)
     {
         $product = auth()->user()->products()->findOrFail($id);
-        return view('products.edit', compact('product'));
+        // category
+        $categories = Category::all();
+        
+        return view('products.edit', compact('product', 'categories'));
     }
 
     public function update(Request $request, $id)
@@ -49,6 +54,7 @@ class ProductController extends Controller
         $request->validate([
             'product_name' => 'required|string|max:255',
             'description' => 'nullable|string',
+            'category_id' => 'nullable|integer',
             'price' => 'required|integer',
             'stock' => 'required|integer',
             'image' => 'required|string'

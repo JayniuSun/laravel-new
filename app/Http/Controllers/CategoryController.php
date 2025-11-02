@@ -10,7 +10,9 @@ class CategoryController extends Controller
 {
     public function index()
     {
-        $categories = Category::all();
+        // $categories = Category::all(); untuk menampilkan data semua user
+
+        $categories = auth()->user()->categories()->orderBy('categories_name', 'asc')->get();
         return view('categories.index', compact('categories'));
     }
     public function create()
@@ -21,10 +23,9 @@ class CategoryController extends Controller
     {
         $request->validate([
             'categories_name' => 'required|string|max:255',
-            'keterangan' => 'nullable|string',
         ]);
-
-        Category::create($request->all());
+        
+        auth()->user()->categories()->create($request->all());
 
         return redirect()->route('categories.index')->with('success', 'Category created successfully!');
     }
@@ -44,11 +45,10 @@ class CategoryController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'categories_name' => 'required|string|max:255',
-            'keterangan' => 'nullable|string',
+            'categories_name' => 'required|string|max:255'
         ]);
 
-        $category = Category::findOrFail($id);
+        $category = auth()->user()->categories()->findOrFail($id);
         $category->update($request->all());
 
         return redirect()->route('categories.index')->with('success', 'Category updated successfully!');
