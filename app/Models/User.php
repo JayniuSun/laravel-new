@@ -9,6 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use App\Models\Project;
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\Project_type;
 use App\Models\Log;
 
 
@@ -70,4 +71,11 @@ class User extends Authenticatable
     {
         return $this->hasMany(Log::class);
     }
+
+    public function project_types()
+    {
+        return $this->hasMany(Project_type::class);
+    }
+
+
 }

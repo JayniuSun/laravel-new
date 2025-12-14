@@ -6,7 +6,7 @@ use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\CategoryController;
-
+use App\Http\Controllers\ProjectTypesController;
 Route::get('/', function () {
     return view('welcome');
 });
@@ -22,6 +22,9 @@ Route::resource('projects', \App\Http\Controllers\ProjectController::class)
 Route::resource('categories', \App\Http\Controllers\CategoryController::class)
     ->middleware(['auth', 'verified']);
 
+Route::resource('project_types', \App\Http\Controllers\ProjectTypesController::class)
+    ->middleware(['auth', 'verified']);
+
 Route::resource('products', \App\Http\Controllers\ProductController::class)
 ->middleware(['auth', 'verified']);
 
@@ -32,6 +35,7 @@ Route::get('/delete-message-all', [MessageController::class, 'deleteAll'])->name
 Route::get('/delete-product-all', [ProductController::class, 'deleteAll'])->name('products.delete-all');
 Route::get('/delete-project-all', [ProjectController::class, 'deleteAll'])->name('projects.delete-all');
 Route::get('/delete-category-all', [CategoryController::class, 'deleteAll'])->name('categories.delete-all');
+Route::get('/delete-project-types-all', [CategoryController::class, 'deleteAll'])->name('project-types.delete-all');
 
 // route jalankan seeder
 Route::get('/run-seeder', function () {
