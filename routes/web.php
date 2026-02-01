@@ -7,6 +7,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProjectTypesController;
+use App\Http\Controllers\ProjectDetailsController;
 Route::get('/', function () {
     return view('welcome');
 });
@@ -23,6 +24,9 @@ Route::resource('categories', \App\Http\Controllers\CategoryController::class)
     ->middleware(['auth', 'verified']);
 
 Route::resource('project_types', \App\Http\Controllers\ProjectTypesController::class)
+    ->middleware(['auth', 'verified']);
+
+    Route::resource('project_details', \App\Http\Controllers\ProjectDetailsController::class)
     ->middleware(['auth', 'verified']);
 
 Route::resource('products', \App\Http\Controllers\ProductController::class)

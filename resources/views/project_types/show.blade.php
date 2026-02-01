@@ -16,6 +16,24 @@
                         <p class="text-gray-700 dark:text-gray-300 mt-2">{{ $project_types->keterangan }}</p>
                     </div>
 
+                    <div class="mb-6">
+                        <h4 class="text-lg font-medium text-gray-900 dark:text-gray-100 mb-2">Projects with this Type</h4>
+                        @if($project_types->projects->isEmpty())
+                            <p class="text-sm text-gray-500 dark:text-gray-400">No projects found for this type.</p>
+                        @else
+                            <ul class="list-disc list-inside space-y-1">
+                                @foreach($project_types->projects as $project)
+                                    <li class="text-gray-700 dark:text-gray-300">
+                                        <a href="{{ route('projects.show', $project->id) }}" class="text-blue-600 dark:text-blue-400 hover:underline">
+                                            {{ $project->name }}
+                                        </a>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        @endif
+                    </div>
+                    
+
 
                     <div class="flex space-x-2 mt-6">
                         <a href="{{ route('project_types.edit', $project_types->id) }}" class="px-4 py-2 bg-yellow-500 text-white rounded-md hover:bg-yellow-600">Edit</a>

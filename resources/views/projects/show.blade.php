@@ -16,6 +16,36 @@
                         <p class="text-gray-700 dark:text-gray-300 mt-2">{{ $project->description }}</p>
                     </div>
 
+                    <!-- tampilkan detail project -->
+
+                    <!-- tampilkan tipe project-->
+
+                    <div class="mb-4">
+                        <p class="text-sm text-gray-500 dark:text-gray-400">
+                            <strong>Project Type:</strong> {{ $project->project_types->types_name ?? 'N/A' }}
+                        </p>
+                        <p class="text-sm text-gray-500 dark:text-gray-400">
+                            <strong>Owner:</strong> {{ $project->user->name ?? 'Unknown' }}
+                        </p>
+                    </div>
+                    
+
+                    <div class="mb-6">
+                        <h4 class="text-lg font-medium text-gray-900 dark:text-gray-100 mb-2">Project Details List</h4>
+                        @if($project->project_details->isEmpty())
+                            <p class="text-sm text-gray-500 dark:text-gray-400">No specific details added for this project.</p>
+                        @else
+                            <ul class="list-disc list-inside space-y-1">
+                                @foreach($project->project_details as $detail)
+                                    <li class="text-gray-700 dark:text-gray-300">
+                                        {{ $detail->details_description }}
+                                    </li>
+                                @endforeach
+                            </ul>
+                        @endif
+                    </div>
+                    
+
                     <div class="mb-4">
                         <p class="text-sm text-gray-500 dark:text-gray-400">
                             <strong>Created At:</strong> {{ $project->created_at }}

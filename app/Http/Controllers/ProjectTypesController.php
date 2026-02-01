@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Project_type;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Models\Project;
 
 
 class ProjectTypesController extends Controller
@@ -31,6 +32,7 @@ class ProjectTypesController extends Controller
     public function show($id)
     {
         $project_types = Project_type::findOrFail($id);
+        $project_types->load('projects');
         return view('project_types.show', compact('project_types'));
     }
 
