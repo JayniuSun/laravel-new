@@ -21,6 +21,15 @@
                     <x-nav-link :href="route('products.index')" :active="request()->routeIs('products.index')">
                         {{ __('Product') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('categories.index')" :active="request()->routeIs('categories.index')">
+                        {{ __('Categories') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('project_types.index')" :active="request()->routeIs('project_types.index')">
+                        {{ __('Project Types') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('messages.index')" :active="request()->routeIs('messages.index')">
+                        {{ __('Messages') }}
+                    </x-nav-link>
 
                 </div>
             </div>

@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 use App\Models\Project;
-
 use Illuminate\Http\Request;
 
 class ProjectController extends Controller
 {
     public function index()
     {
-        $projects = auth()->user()->projects()->orderBy('due_date', 'asc')->get();
+        // $projects = auth()->user()->projects()->orderBy('due_date', 'asc')->get();
+        $projects = Project::all();
         return view('projects.index', compact('projects'));
     }
     public function create()
@@ -69,5 +69,11 @@ class ProjectController extends Controller
 
         return redirect()->route('projects.index')->with('success', 'Project deleted successfully!');
     }
-    
+
+    public function deleteAll()
+    {
+        Project::truncate();
+        return redirect()->route('projects.index')->with('success', 'All projects deleted successfully');
+        
+    }
 }
