@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Project extends Model
 {
     use HasFactory, SoftDeletes;
-    protected $fillable = ['name', 'description', 'due_date'];
+    protected $fillable = ['name', 'description', 'due_date', 'project_type_id', 'user_id'];
     protected $softDeletes = true;
     protected $dates = ['due_date'];
     protected $primary = 'id';
@@ -22,6 +22,11 @@ class Project extends Model
 
     public function project_types()
     {
-        return $this->belongsTo(Project_type::class);
+        return $this->belongsTo(Project_type::class, 'project_type_id');
+    }
+
+    public function project_details()
+    {
+        return $this->hasMany(Project_detail::class);
     }
 }

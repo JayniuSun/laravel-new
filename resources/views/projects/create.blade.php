@@ -30,6 +30,24 @@
                             @enderror
                         </div>
 
+                        <!-- project type -->
+
+                        <div class="mb-4">
+                            <label for="project_type_id" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Project Type</label>
+                            <select name="project_type_id" id="project_type_id" class="mt-1 block w-full rounded-md shadow-sm border-gray-300 dark:border-gray-700 dark:bg-gray-900 text-gray-900 dark:text-gray-100 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                                <option value="">Select Project Type</option>
+                                @foreach ($project_types as $type)
+                                    <option value="{{ $type->id }}" {{ old('project_type_id') == $type->id ? 'selected' : '' }}>
+                                        {{ $type->types_name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                            @error('project_type_id')
+                                <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                            @enderror
+                        </div>
+                        
+
                         <div class="mb-4">
                             <label for="due_date" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Due Date (Optional)</label>
                             <input type="date" name="due_date" id="due_date" class="mt-1 block w-full rounded-md shadow-sm border-gray-300 dark:border-gray-700 dark:bg-gray-900 text-gray-900 dark:text-gray-100 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" value="{{ old('due_date') }}">

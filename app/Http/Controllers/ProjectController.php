@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Project;
 use Illuminate\Http\Request;
+use App\Models\Project_type;
 
 class ProjectController extends Controller
 {
@@ -12,16 +13,21 @@ class ProjectController extends Controller
         $projects = Project::all();
         return view('projects.index', compact('projects'));
     }
+    
     public function create()
     {
-        return view('projects.create');
+        // project type
+        $project_types = Project_type::all();
+        return view('projects.create', compact('project_types'));
     }
+
     public function store(Request $request)
     {
         $request->validate([
             'name' => 'required|string|max:255',
             'description' => 'nullable|string',
             'due_date' => 'nullable|date',
+            'project_type_id' => 'required|integer'
         ]);
 
         auth()->user()->projects()->create($request->all());
@@ -32,6 +38,9 @@ class ProjectController extends Controller
     public function show($id)
     {
         $project = auth()->user()->projects()->findOrFail($id);
+        $project->load('project_details');
+        $project->load('project_types');
+        $project->load('user');
         return view('projects.show', compact('project'));
     }
 
