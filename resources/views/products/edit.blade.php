@@ -11,7 +11,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                    <form action="{{ route('products.update', $product->id) }}" method="POST">
+                    <form action="{{ route('products.update', $product->id) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
 
@@ -66,7 +66,7 @@
 
                         <div class="mb-4">
                             <label for="image" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Image</label>
-                            <input type="text" name="image" id="image" class="mt-1 block w-full rounded-md shadow-sm border-gray-300 dark:border-gray-700 dark:bg-gray-900 text-gray-900 dark:text-gray-100 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" value="{{ old('image', $product->image) }}" required>
+                            <input type="file" name="image" id="image" class="mt-1 block w-full rounded-md shadow-sm border-gray-300 dark:border-gray-700 dark:bg-gray-900 text-gray-900 dark:text-gray-100 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" value="{{ old('image', $product->image) }}" required>
                             @error('image')
                                 <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                             @enderror

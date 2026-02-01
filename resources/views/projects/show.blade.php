@@ -58,6 +58,7 @@
                                 <strong>Due Date:</strong> {{ $project->due_date }}
                             </p>
                         @endif
+                        <img src="{{ asset('storage/' . $project->image) }}" alt="{{ $project->name }}" class="mt-4 w-64 h-64 object-cover rounded-md">
                     </div>
 
                     <div class="flex space-x-2 mt-6">

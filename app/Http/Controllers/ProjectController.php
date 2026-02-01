@@ -30,7 +30,10 @@ class ProjectController extends Controller
             'project_type_id' => 'required|integer'
         ]);
 
-        auth()->user()->projects()->create($request->all());
+        $imagePath = $request->file('image')->store('project_images', 'public');
+
+        auth()->user()->projects()->create(array_merge($request->all(), ['image' => $imagePath]));
+
 
         return redirect()->route('projects.index')->with('success', 'Project created successfully!');
     }
@@ -56,10 +59,13 @@ class ProjectController extends Controller
             'name' => 'required|string|max:255',
             'description' => 'nullable|string',
             'due_date' => 'nullable|date',
+            'image' => 'required|file|image'
         ]);
 
         $project = auth()->user()->projects()->findOrFail($id);
-        $project->update($request->all());
+        $imagePath = $request->file('image')->store('project_images', 'public');
+        $project->update(array_merge($request->all(), ['image' => $imagePath]));
+
 
         return redirect()->route('projects.index')->with('success', 'Project updated successfully!');
     }

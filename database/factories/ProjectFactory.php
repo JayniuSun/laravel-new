@@ -28,7 +28,7 @@ class ProjectFactory extends Factory
         return [
             'user_id' => User::factory(),
             'name' => $this->faker->sentence(4),
-            'description' => $this->faker->paragraph(3),
+            'description' => $this->faker->paragraph(30),
             'due_date' => $this->faker->dateTimeBetween('+1 week', '+1 year'),
         ];
     }

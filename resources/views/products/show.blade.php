@@ -17,8 +17,7 @@
                         <p class="text-gray-700 dark:text-gray-300 mt-2">{{ $products->description }}</p>
                         <p class="text-gray-700 dark:text-gray-300 mt-2">{{ $products->price }}</p>
                         <p class="text-gray-700 dark:text-gray-300 mt-2">{{ $products->stock }}</p>
-                        <p class="text-gray-700 dark:text-gray-300 mt-2">{{ $products->image }}</p>
-
+                        <img src="{{ asset('storage/' . $products->image) }}" alt="{{ $products->product_name }}" class="mt-4 w-64 h-64 object-cover rounded-md">
                     </div>
 
                     <div class="mb-4">
