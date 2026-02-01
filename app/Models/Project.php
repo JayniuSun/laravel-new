@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Project extends Model
 {
     use HasFactory, SoftDeletes;
-    protected $fillable = ['name', 'description', 'due_date'];
+    protected $fillable = ['name', 'description', 'due_date', 'image'];
     protected $softDeletes = true;
     protected $dates = ['due_date'];
     protected $primary = 'id';
